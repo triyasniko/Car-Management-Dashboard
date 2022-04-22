@@ -3,7 +3,7 @@
 
 ## ERD
 
-- DB Diagram (<a src="https://dbdiagram.io/d/6262e1a81072ae0b6ad206d2">Click Here</a>)
+- DB Diagram (<a href="https://dbdiagram.io/d/6262e1a81072ae0b6ad206d2">Click Here</a>)
 <br>
 ## Getting Started
 
