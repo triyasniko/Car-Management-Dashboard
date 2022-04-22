@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental Dashboard</title>
+    <%- include('layouts/styles') %>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <%- include('layouts/navbar') %>
+    <br>
+    <section class="content-section p-5 mt-0">
+        <div class="row">
+            <div class="col-0" id="show-col-0">
+                <div class="adding-space" style="width: 300px;"></div>
+            </div>
+            <div class="col-10 offset-2" id="show-col-12">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="sub-tree d-flex align-items-center mt-3 mb-3">
+                            <a href="#">
+                                <p class="font-weight-bold">Cars</p>
+                            </a>
+                            <i class="fa fa-solid fa-chevron-right mx-2"></i>
+                            <a href="#">
+                                <p class="font-weight-bold">List Car</p>
+                            </a>
+                            <i class="fa fa-solid fa-chevron-right mx-2"></i>
+                            <a href="#">
+                                <p class="font-weight-bold">Add New Car</p>
+                            </a>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <form method="post" action="/cars/edit/<%= car.id %>">
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <label for="plate" class="col-form-label">Plate :</label>
+                                            <label for="wajib" style="color: red">*</label>
+                                        </div>
+                                        <div class="col-lg-9">
+                                            <input name="plate" type="text" class="form-control" placeholder="Plate" value="<%= car.plate %>"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <label for="manufacture" class="col-form-label">Manufacture :</label>
+                                            <label for="wajib" style="color: red">*</label>
+                                        </div>
+                                        <div class="col-lg-9">
+                                            <input type="text" name="manufacture" class="form-control"
+                                                placeholder="Manufacture" value="<%= car.manufacture %>" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <label for="image" class="col-form-label">Image :</label>
+                                            <label for="wajib" style="color: red">*</label>
+                                        </div>
+                                        <div class="col-lg-9">
+                                            <input type="text" name="image" class="form-control" value="<%= car.image %>" placeholder="Image" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <label for="capacity" class="col-form-label">Capacity :</label>
+                                            <label for="wajib" style="color: red">*</label>
+                                        </div>
+                                        <div class="col-lg-9">
+                                            <input type="number" name="capacity" class="form-control"
+                                                placeholder="Capacity" value="<%= car.capacity %>"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <label for="rentPerDay" class="col-form-label">Rent Per Day :</label>
+                                            <label for="wajib" style="color: red">*</label>
+                                        </div>
+                                        <div class="col-lg-9">
+                                            <input type="number" name="rentPerDay" class="form-control"
+                                                placeholder="Rent Per Day" value="<%= car.rentPerDay %>" />
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-outline-primary">Cancel</button>
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <%- include('layouts/sidebar') %>
+    <%- include('layouts/scripts') %>
+
+</html>

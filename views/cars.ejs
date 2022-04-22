@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental Dashboard</title>
+    <%- include('layouts/styles') %>
+    <style>
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: 700 !important;
+        }
+
+        p {
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        span.list-car {
+            color: black;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            margin-top: 27px;
+        }
+
+        .btn.btn-primary {
+            background-color: #0d28a6;
+            border-radius: 2px;
+            font-weight: 700;
+            font-size: 14px;
+            height: 36px;
+            width: 142px;
+        }
+
+        /* MODAL */
+
+        .modal {
+            margin: 150px auto;
+        }
+
+        .modal-dialog {
+            max-width: 387px;
+        }
+
+        .btn.btn-save-modal {
+            background-color: #0d28a6;
+            color: white;
+            padding: 8px 35px;
+            font-weight: bold;
+            border: 2px solid #0d28a6;
+        }
+
+        .btn.btn-close-modal {
+            padding: 8px 25px;
+            color: #0d28a6;
+            background-color: white;
+            border: 2px solid #0d28a6;
+            font-weight: bold;
+        }
+
+        .modal-header {
+            border-bottom: none;
+        }
+
+        .modal-footer {
+            border-top: none;
+        }
+
+        /* END MODAL */
+
+        .btn.btn-outline-primary {
+            border: 1px solid #aeb7e1;
+            color: #aeb7e1;
+            border-radius: 2px;
+            font-weight: 700;
+            background-color: white;
+            margin-right: 16px;
+        }
+
+        .btn.btn-outline-primary:hover {
+            color: #0d28a6;
+            background-color: #cfd4ed;
+        }
+
+        .list-button {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card .card-body h6 {
+            margin-bottom: 1rem;
+        }
+
+        .card .card-body p.card-text img {
+            padding-right: 9.5px;
+        }
+
+        .btn.btn-danger {
+            background-color: white;
+            color: red;
+            font-weight: 700;
+            padding: 8px 12px;
+        }
+
+        .btn.btn-success {
+            background-color: #5cb85f;
+            color: white;
+            font-weight: 700;
+            padding: 8px 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <%- include('layouts/navbar') %>
+    <br>
+    <section class="content-section p-5 mt-0">
+        <div class="row">
+            <div class="col-0" id="show-col-0">
+                <div class="adding-space" style="width: 300px;"></div>
+            </div>
+            <div class="col-10 offset-2" id="show-col-12">
+                <!-- <div class="container-fluid"> -->
+                <div class="row">
+                    <div class="col">
+                        <div class="list-button">
+                            <span class="list-car">List Car</span>
+                            <div class="button-right">
+                                <a href="/cars/form" class="btn btn-primary">
+                                    <img src="images/icon/fi_plus.png" alt="icon-plus"> Add New Car
+                                </a>
+                            </div>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-outline-primary">All</button>
+                            <button type="button" class="btn btn-outline-primary">Small</button>
+                            <button type="button" class="btn btn-outline-primary">Medium</button>
+                            <button type="button" class="btn btn-outline-primary">Large</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <% cars.forEach(function(car) { %>
+                    <div class="col-4 mt-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <img class="card-img-top" src="images/<%- car.image %>" alt="img-car">
+                                <p><%- car.manufacture %></p>
+                                <h6><%- car.rentPerDay%> / hari</h6>
+                                <p class="card-text">
+                                    <img src="images/icon/fi_clock.png " alt="icon-clock">
+                                    <%- car.updatedAt %>
+                                </p>
+                                <div class="d-flex justify-content-between">
+                                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteModal">
+                                        <img src="images/icon/fi_trash-2.png" alt="icon-trash">Delete
+                                    </button>
+
+                                    <a href="/cars/edit/<%= car.id %>" class="btn btn-success">
+                                        <img src="images/icon/fi_edit.png" alt="icon-edit">Edit
+                                    </a>
+                                </div>
+                                <!-- Modal -->
+                                <div class="modal fade" id="deleteModal" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header d-flex justify-content-center">
+                                                <img class="img-fluid" src="images/img-BeepBeep.png" alt="">
+                                            </div>
+                                            <div class="modal-body text-center">
+                                                <h6>Menghapus Data Mobil</h6>
+                                                <p>Setelah dihapus, data mobil tidak dapat dikembalikan. Yakin ingin
+                                                    menghapus?</p>
+                                            </div>
+                                            <div class="modal-footer d-flex justify-content-center">
+                                                <a href="/cars/delete/<%= car.id %>" class="btn btn-save-modal">Ya</a>
+                                                <button type="button" class="btn btn-close-modal"
+                                                    data-bs-dismiss="modal">Tidak</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Modal -->
+                            </div>
+                        </div>
+                        <!-- </div> -->
+                    </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+    </section>
+    <%- include('layouts/sidebar') %>
+    <%- include('layouts/scripts') %>
+
+</html>

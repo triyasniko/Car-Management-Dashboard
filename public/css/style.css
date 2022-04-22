@@ -1,0 +1,62 @@
+body{
+    background-color: #F4F5F7;
+}
+.navbar{
+    background-color: #fff;
+}
+.main-menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #0D28A6;
+    width: 70px;
+    height: 100vh;
+    color: white !important;
+    font-size: 12px;
+    z-index: 9999;
+}
+
+.main-menu a,
+.main-menu a:hover {
+    color: white !important;
+    text-decoration: none;
+}
+
+.box {
+    height: 70px;
+}
+
+.box:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.side-icon {
+    width: 30px;
+}
+
+.menu-list {
+    position: fixed;
+    top: 70px;
+    left: 70px;
+    width: 220px;
+    height: 100vh;
+    background-color: white;
+}
+
+.list-menu {
+    font-weight: 700;
+    padding: 12px 18px;
+}
+
+.list-menu:hover {
+    background-color: #CFD4ED;
+}
+
+.menu-list a {
+    color: black;
+    text-decoration: none;
+}
+
+.content-section {
+    margin-left: 100px;
+}
